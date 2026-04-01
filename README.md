@@ -17,7 +17,7 @@ This repository contains the revised version of our submission, incorporating re
 - Explicitly specified weight-only quantization setup: bitsandbytes NF4 (W4A16) and LLM.int8() (W8A16)
 - Scoped the work to memory-bound autoregressive decoding at low batch sizes
 
-**New Cross-Backend Validation (Section 4.6) under NVML energy measurement**
+**New Cross-Backend Validation (Section 4.5.1) under NVML energy measurement**
 - Added AWQ (fused GEMM kernels) vs bitsandbytes NF4 vs FP16 comparison on GSM8K (Mistral-7B, A100-80GB)
 - AWQ achieves COR = −0.03 (faster than FP16) and 41% lower energy, fully eliminating the efficiency trap
 - Yet accuracy remains 2.4pp below FP16 (40.71% vs 43.14%), confirming Theorem 4.5: accuracy loss is inherent to 4-bit precision, not kernel implementation
