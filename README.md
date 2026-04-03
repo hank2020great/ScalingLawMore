@@ -4,11 +4,26 @@
 
 This repository contains the revised version of our submission, incorporating reviewer feedback. Below is a summary of changes.
 
+## Latest Update (Discussion Period, April 3–7)
+
+In response to reviewer feedback during the discussion period, we have made the following additional updates:
+
+- **Expanded Related Work (Section 2):** Added "Quantization and Reasoning Accuracy" paragraph discussing Liu et al. [COLM 2025], Li et al. [2025], and how our work addresses two gaps in the literature: (1) isolated single-dimension evaluation and (2) lack of predictive theoretical mechanisms
+- **Qwen2.5-32B Experiments (Section 4.8, Table 3):** Completed on RTX PRO 6000 Blackwell for both GSM8K and MathQA. Key finding: the *same* 32B model exhibits opposite trap behavior depending on batch size — trap dissolved on GSM8K (COR = −0.46, B=16) but active on MathQA (COR = +0.73, B=8)
+- **New Theorem 4.6 (Critical Model Scale N\*):** Formalizes the condition under which the efficiency trap dissolves: N\* = φ·B\_W·B / α(π−p). Three predictions validated empirically across 0.6B–32B
+- **Corollary 4.7 (70B Prediction):** At frontier scale (N >> N\*), the efficiency trap vanishes but accuracy trap persists — quantization becomes "invisibly" harmful for multi-hop reasoning
+- **Model range expanded to 53× (0.6B → 32B)** across five GPU architectures
+
+**Note on formatting:** The current manuscript uses a space-lenient format for review convenience. For the camera-ready version, we will apply the official ICML two-column template and consolidate figures/sections to fit within page limits.
+
+---
+
 ## Changes in This Revision
 
 **Expanded Related Work (Section 2)**
 - Added discussion of quantization-aware inference optimization covering Marlin, AWQ, QuIP#, FlexGen, and Atom
-- Clarified how our work extends prior energy-efficiency studies to the multi-hop reasoning regime
+- Added "Quantization and Reasoning Accuracy" paragraph positioning against Liu et al. [COLM'25], Li et al. [2025], Rajput & Sharma [2024], and Husom et al. [2025]
+- Clarified how our work extends prior studies by providing joint three-dimensional diagnosis and predictive theory
 
 **New Pipeline Overview Figure (Figure 1)**
 - Added end-to-end evaluation pipeline figure: Model → Quantize → Reasoning → Measure → SI Framework → Trap Detection
